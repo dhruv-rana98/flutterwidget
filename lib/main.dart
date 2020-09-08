@@ -5,7 +5,14 @@ void main()=>runApp(MaterialApp(
 )
 );
 
-class Ninjacard extends StatelessWidget {
+class Ninjacard extends StatefulWidget {
+  @override
+  _NinjacardState createState() => _NinjacardState();
+}
+
+class _NinjacardState extends State<Ninjacard> {
+
+  int count=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +22,15 @@ class Ninjacard extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         centerTitle: true,
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            count+=1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0 ,40.0 ,30.0 ,0.0),
@@ -58,7 +74,7 @@ class Ninjacard extends StatelessWidget {
             ),
             SizedBox(height: 20.0),
             Text(
-              '4',
+              '$count',
               style: TextStyle(
                   color: Colors.grey,
                   letterSpacing: 2.0,
